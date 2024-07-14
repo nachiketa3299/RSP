@@ -25,6 +25,8 @@ public:
 		for (auto const& edge: edges) {
 			add_edge(edge);
 		}
+
+		std::cout << " Oh Y ea h ! ";
 	}
 
 public:

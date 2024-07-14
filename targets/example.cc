@@ -1,13 +1,16 @@
 #include <string>
 #include <iostream>
-#include "GraphAdj.h"
+#include <filesystem>
+
+// #include "GraphAdj.h"
+#include "GraphBuilder.h"
 
 using namespace RSP;
 
 int main() {
-	std::cout << "Hello, World" << std::endl;
-
-	auto g = GraphAdj<std::string, float>();
+	std::string const filedir = "../data/graph_data.yaml";
+	auto gb = GraphBuilder<std::string, float>(filedir);
+	auto g = gb.instantiate_by_adjacency_graph();
 
 	return 0;
 }
