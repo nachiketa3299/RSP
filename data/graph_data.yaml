@@ -1,26 +1,20 @@
-vertices: ["A", "B", "C", "D", "E", "F", "G"]
-edges:
-  - from: 0
-    to: 1
-    weight: 2.0
-  - from: 0
-    to: 2
-    weight: 6.0
-  - from: 2
-    to: 3
-    weight: 8.0
-  - from: 1
-    to: 3
-    weight: 5.0
-  - from: 3
-    to: 4
-    weight: 10.0
-  - from: 3
-    to: 5
-    weight: 15.0
-  - from: 4
-    to: 6
-    weight: 2.0
-  - from: 5
-    to: 6
-    weight: 6.0
+- vertices: ["A", "B", "C", "D", "E", "F", "G"]
+  edges:
+    - ["A", "B", 2.0]
+    - ["A", "C", 6.0]
+    - ["B", "D", 5.0]
+    - ["C", "D", 8.0]
+    - ["D", "E", 10.0]
+    - ["D", "F", 15.0]
+    - ["E", "G", 2.0]
+    - ["F", "G", 6.0]
+- vertices: ["A", "B", "C", "D", "E", "F", "G"]
+  edges:
+    - ["A", "B", 2.0]
+    - ["A", "C", 6.0]
+    - ["B", "D", 5.0]
+    - ["C", "D", 8.0]
+    - ["D", "E", 10.0]
+    - ["D", "F", 15.0]
+    - ["E", "G", 2.0]
+    - ["F", "G", 6.0]
