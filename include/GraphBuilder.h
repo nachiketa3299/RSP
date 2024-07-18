@@ -65,7 +65,6 @@ public:
 		}
 	}
 
-
 	template <template <class, class> class G> requires IGraphDerived<G, value_t, weight_t>
 	std::vector<IGraph<value_t, weight_t>*> BuildGraphs() const {
 		auto ret = std::vector<IGraph<value_t, weight_t>*>(graphs_.size(), nullptr);

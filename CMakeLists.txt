@@ -11,6 +11,8 @@ SET(rsp_sources
 	include/IGraph.h
 	include/Graph_AdjacencyList.h
 	include/GraphBuilder.h
+	include/BFS.h
+	include/Dijkstra.h
 )
 
 # Fetch yaml-cpp

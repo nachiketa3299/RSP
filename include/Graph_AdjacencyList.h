@@ -33,7 +33,7 @@ private:
 	}
 
 public: // IGraph Impl
-	std::vector<adj_t> get_adjacents(size_t const& vidx) const override {
+	std::vector<adj_t> const& get_adjacents(size_t const& vidx) const override {
 		return adj_list_[vidx];
 	}
 
@@ -58,6 +58,10 @@ public: // IGraph Impl
 		}
 
 		std::cout << "\n";
+	}
+
+	size_t vertices_size() const override {
+		return vertices_.size();
 	}
 
 private:	

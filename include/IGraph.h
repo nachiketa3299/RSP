@@ -17,8 +17,9 @@ public:
 
 	virtual ~IGraph() = default;
 
-	virtual std::vector<adj_t> get_adjacents(size_t const& idx) const = 0;
+	virtual std::vector<adj_t> const& get_adjacents(size_t const& idx) const = 0;
 	virtual value_t const& get_vertex_value_at(size_t const& idx) const = 0;
+	virtual size_t vertices_size() const = 0;
 
 	virtual void print() const = 0;
 };
