@@ -3,22 +3,24 @@
 #include <vector>
 #include <format>
 
-#include "IGraph.h"
+#include "Graph.h"
 
 namespace RSP {
 
 template <class T, class W>
-class Graph_AdjacencyList : public IGraph<T, W> {
+class Graph_AdjacencyList : public Graph<T, W> {
 public:
-	using value_t = typename IGraph<T, W>::value_t;
-	using weight_t = typename IGraph<T, W>::weight_t;
-	using size_t = typename IGraph<T, W>::size_t;
-	using adj_t = typename IGraph<T, W>::adj_t;
-	using edge_t = typename IGraph<T, W>::edge_t;
+	using value_t = typename Graph<T, W>::value_t;
+	using weight_t = typename Graph<T, W>::weight_t;
+	using size_t = typename Graph<T, W>::size_t;
+	using adj_t = typename Graph<T, W>::adj_t;
+	using edge_t = typename Graph<T, W>::edge_t;
+
+	using Graph<T,W>::vertices_;
 
 public:
 	Graph_AdjacencyList(std::vector<value_t> const& vertices, std::vector<edge_t> const& edges)
-		: vertices_(vertices) 
+		: Graph<T, W>(vertices, edges)
 		, adj_list_(vertices.size())
 	{
 		for (auto const& edge: edges) {
@@ -37,19 +39,16 @@ public: // IGraph Impl
 		return adj_list_[vidx];
 	}
 
-	value_t const& get_vertex_value_at(size_t const& idx) const override {
-		return vertices_[idx];
-	}
-
 	void print() const override {
-		std::cout << "- adj_list:\n";
+		Graph<value_t, weight_t>::print();
+		std::cout << "- Adjacency List:\n";
 
 		for (auto i = 0; i < adj_list_.size(); ++i) {
-			std::cout << std::format("({:0>2}, {}): ", i, vertices_[i]);
+			std::cout << std::format("\t({:0>2}, {}): ", i, vertices_[i]);
 
 			for (auto j = 0; j < adj_list_[i].size(); ++j) {
 				auto const& [weight, to] = adj_list_[i][j];
-				std::cout << std::format("[{:>5}, ({:0>2}, {})]", weight, to, vertices_[to]);
+				std::cout << std::format("[w: {:>5}, t: ({:0>2}, {})]", weight, to, vertices_[to]);
 
 				if (j != adj_list_[i].size() - 1)
 					std::cout << ", ";
@@ -60,12 +59,7 @@ public: // IGraph Impl
 		std::cout << "\n";
 	}
 
-	size_t vertices_size() const override {
-		return vertices_.size();
-	}
-
-private:	
-	std::vector<value_t> vertices_;
+protected:	
 	std::vector<std::vector<adj_t>> adj_list_;
 };
 

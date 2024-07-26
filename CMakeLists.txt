@@ -8,11 +8,13 @@ PROJECT(RSP
 SET(CMAKE_CXX_STANDARD 23)
 
 SET(rsp_sources
+	include/Graph.h
 	include/IGraph.h
 	include/Graph_AdjacencyList.h
 	include/GraphBuilder.h
 	include/BFS.h
 	include/Dijkstra.h
+	include/Bellman_Ford.h
 )
 
 # Fetch yaml-cpp
