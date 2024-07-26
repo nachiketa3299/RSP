@@ -27,12 +27,20 @@ public: // IGraph Impl
 		return vertices_[idx];
 	}
 
-	size_t vertices_size() const {
+	size_t vertices_size() const override {
 		return vertices_.size();
 	}
 
-	size_t edges_size() const {
+	size_t edges_size() const override {
 		return edges_.size();
+	}
+
+	std::vector<value_t> const& vertices() const override {
+		return vertices_;
+	}
+
+	std::vector<edge_t> const& edges() const override {
+		return edges_;
 	}
 
 	void print() const override { 

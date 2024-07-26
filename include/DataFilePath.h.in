@@ -1,0 +1,3 @@
+#pragma once
+
+#define DATA_FILE_PATH "${rsp_data_file_path}"

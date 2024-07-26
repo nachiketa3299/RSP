@@ -22,6 +22,9 @@ public:
 	virtual size_t vertices_size() const = 0;
 	virtual size_t edges_size() const = 0;
 
+	virtual std::vector<value_t> const& vertices() const = 0;
+	virtual std::vector<edge_t> const& edges() const = 0;
+
 	virtual void print() const = 0;
 };
 

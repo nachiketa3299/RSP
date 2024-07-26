@@ -17,6 +17,9 @@ SET(rsp_sources
 	include/Bellman_Ford.h
 )
 
+SET(rsp_data_file_path "${CMAKE_SOURCE_DIR}/data/")
+CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/include/DataFilePath.h.in" "${CMAKE_SOURCE_DIR}/include/DataFilePath.h")
+
 # Fetch yaml-cpp
 include(FetchContent)
 

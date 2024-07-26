@@ -1,8 +1,8 @@
 #include <string>
 #include <iostream>
 #include <filesystem>
-#include <numeric>
-#include <format>
+
+#include "DataFilePath.h"
 
 #include "GraphBuilder.h"
 #include "Graph.h"
@@ -12,9 +12,17 @@
 #include "Dijkstra.h"
 
 int main() {
-	std::string const filedir = "../data/graph_data.yaml";
+	// Check Files
+	std::string const file_path = std::string(DATA_FILE_PATH) + std::string("graph_data.yaml");
 
-	auto graph_builder = RSP::GraphBuilder<std::string, float>(filedir);
+	std::cout << "Graph Data File Path: " << file_path << std::endl;
+
+	if (!std::filesystem::exists(file_path)) {
+		std::cerr << "File  does not exist: " << file_path << std::endl;
+		return EXIT_FAILURE;
+	}
+
+	auto graph_builder = RSP::GraphBuilder<std::string, float>(file_path);
 	auto graphs = graph_builder.BuildGraphs<RSP::Graph_AdjacencyList>();
 
 	for (auto const* igraph: graphs) {
